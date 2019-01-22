@@ -14,10 +14,11 @@ public class GetData {
 
 	/*@Test
 	public void weatherMessageBody(){
+		
 		RestAssured.baseURI="http://restapi.demoqa.com/utilities/weather/city";
 		RequestSpecification httpRequest=RestAssured.given();
-		Response response=httpRequest.get("/Pune");
-		
+		Response response=httpRequest.get("/Kolkata");
+		httpRequest.header("Content-Type","application/json");
 		ResponseBody body= response.getBody();
 		
 	    body.asString();
@@ -26,38 +27,18 @@ public class GetData {
 		String bodyAsString=body.asString();
 		System.out.println(bodyAsString);
 		System.out.println("-----------------------------");
-		Assert.assertEquals(bodyAsString.contains("Pune"), true);
+		Assert.assertEquals(bodyAsString.contains("Kolkata"), true);
 		
 		JsonPath jsonPath=response.jsonPath();
 		
 		String city=jsonPath.get("City");
 		System.out.println("City recieved from response:"+city);
-		Assert.assertEquals(city, "Pune","City name is correct");
+		Assert.assertEquals(city, "Kolkata","City name is correct");
+		
 		
 		
 	}
 	*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -82,10 +63,9 @@ public class GetData {
 	@Test()
 	public void testBody(){
 		
-		Response resp=RestAssured.get(/*"http://restapi.demoqa.com/utilities/weather/city/Kolkata"*/
-				/*"http://apps.sainikschoolpurulia.com/webiq/student/notes/ay20182019"*/
-		/*		"https://jsonplaceholder.typicode.com/todos/1"*//*"https://gorest.co.in/public-api/users?_format=json"*/
-				"https://restcountries.in/rest/v2/all");
+		Response resp=RestAssured.get("http://restapi.demoqa.com/utilities/weather/city/Kolkata");
+				//"https://jsonplaceholder.typicode.com/todos/1""https://gorest.co.in/public-api/users?_format=json"
+				//"https://restcountries.in/rest/v2/all");
 		JSONObject response= new JSONObject();
 		response.get(resp);
 		String data=resp.asString();
@@ -94,10 +74,10 @@ public class GetData {
 		System.out.println("Assertion is passed:"+data);
 		System.out.println("Response time is"+resp.getTime());
 		
-		/*JsonPath jsonP=resp.jsonPath();
+		JsonPath jsonP=resp.jsonPath();
 		String temp=jsonP.get("Temperature");
 		System.out.println("Temp is rec:"+temp);
-		Assert.assertEquals(temp, "33 Degree celsius");*/
+		Assert.assertEquals(temp, "21 Degree celsius");
 		
 	}
 	
